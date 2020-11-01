@@ -10,6 +10,7 @@ const JumboWrapper = styled.div`
     background-image: url(${process.env.PUBLIC_URL}/images/background.png);
     background-size: cover;
     margin-bottom: 0;
+    border-radius: 0;
   }
 
   #title {

@@ -56,7 +56,7 @@ const AdminDashboard = () => {
     <Layout
       title="Admin Dashboard"
       description={`G'day ${name}!`}
-      className="container-fluid"
+      className="container-fluid mt-5"
     >
       <Row>
         <Col md={3}>

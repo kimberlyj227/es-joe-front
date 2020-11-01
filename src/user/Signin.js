@@ -66,7 +66,7 @@ const Signin = () => {
 
         <Button 
           onClick={clickSubmit}
-          style={{ background: "#ddad49", color: "#fff", borderColor: "#ddad49"}}
+          style={{ background: "#ddad49", color: "#fff", borderColor: "#ddad49", border: "none"}}
         > Sign In </Button>
       </Form>
     )

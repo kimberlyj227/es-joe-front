@@ -78,7 +78,10 @@ const Signup = () => {
           </Form.Text>
         </Form.Group>
 
-        <Button onClick={clickSubmit}> Submit </Button>
+        <Button 
+          onClick={clickSubmit}
+          style={{ background: "#ddad49", color: "#fff", borderColor: "#ddad49", border: "none"}}
+        > Submit </Button>
       </Form>
     )
   }
@@ -93,7 +96,7 @@ const Signup = () => {
 
   const showSuccess = () => {
     return (
-      <Alert variant="info" style={{ display: success ? "" : "none" }}>
+      <Alert variant="success" style={{ display: success ? "" : "none" }}>
         Account created successfully! Please <Link to="/signin">Sign In</Link>
       </Alert>
     )
@@ -103,8 +106,8 @@ const Signup = () => {
   return (
     <Layout
       title="Sign Up Page"
-      description="Sign up to Node React Ecommerce App"
-      className="container col-md-8 offset-md-2"
+      description="Sign up with Espresso Joe"
+      className="container col-md-8 offset-md-2 mt-5"
     >
      {showError()}
      {showSuccess()}

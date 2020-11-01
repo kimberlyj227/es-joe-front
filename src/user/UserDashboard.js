@@ -64,7 +64,7 @@ const Dashboard = () => {
   const userHistory = (history) => {
     return (
       <Card className="mb-5">
-        <Card.Header><h4>Purchase History</h4></Card.Header>
+        <Card.Header><h4>Subscription History</h4></Card.Header>
         <Card.Body>
           <ListGroup>
             <ListGroup.Item>
@@ -98,7 +98,7 @@ const Dashboard = () => {
     <Layout
       title="User Dashboard"
       description={`G'day ${name}!`}
-      className="container-fluid"
+      className="container-fluid mt-5"
     >
       <Row>
         <Col md={3}>

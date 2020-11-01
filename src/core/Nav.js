@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { Link, withRouter } from "react-router-dom";
 import { FaTshirt, FaHome, FaSignInAlt } from "react-icons/fa";
 import { signOut, isAuthenticated } from "../auth";
-import { totalItems } from "./cartHelpers";
+// import { totalItems } from "./cartHelpers";
 
 import styled from "styled-components";
 
@@ -69,12 +69,22 @@ const NavBar = ({ history }) => {
                   style={isActive(history, "/shirts")} 
                   to="/shirts">
                     <FaTshirt />
-                      Shirts
+                  {"  "} Shirts
                     
                   </Link>
               </li>
 
               <li className="nav-item">
+                <Link 
+                  className="nav-link" 
+                  style={isActive(history, "/subscription")} 
+                  to="/subscription">
+                    Shirt of the Month
+                    
+                  </Link>
+              </li>
+
+              {/* <li className="nav-item">
                 <Link 
                   className="nav-link" 
                   style={isActive(history, "/cart")} 
@@ -86,7 +96,7 @@ const NavBar = ({ history }) => {
                       </small>
                     </sup>
                   </Link>
-              </li>
+              </li> */}
 
               {isAuthenticated() && isAuthenticated().user.role === 0 ? (
                 <li className="nav-item">

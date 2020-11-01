@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { BiCoffeeTogo } from "react-icons/bi";
 import {Modal, Button} from "react-bootstrap";
 import styled from "styled-components";
+import { isAuthenticated } from "../auth";
 
 
 const CornerWrapper = styled.div`
@@ -83,7 +85,12 @@ const ShirtModal = props => {
         <Modal.Footer>
           <Button onClick={props.onHide} variant="light" className="button">Close</Button>
           <Button onClick={props.onHide} variant="primary" className="button">Subscribe</Button>
-          <Button onClick={props.onHide} variant="dark" className="button">Login</Button>
+          {!isAuthenticated() && (
+            <Link to="/signin">
+              <Button  variant="dark" className="button">Login</Button>
+            </Link>
+
+          )}
         </Modal.Footer>
           
       </StyleModal>
