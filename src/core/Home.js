@@ -55,16 +55,15 @@ const JumboWrapper = styled.div`
 
   @media only screen and (max-width: 600px) {
     
-    #logo {
+    .img {
       margin-top: 25%;
       align-content: center;
       justify-content: center;
-      height: 250px;
-      width: 200px;
+      
       
     }
 
-    h2{
+    h2 {
       font-size: 3rem;
       font-weight: bold;
     }
