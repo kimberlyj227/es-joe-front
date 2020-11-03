@@ -53,7 +53,7 @@ const JumboWrapper = styled.div`
     margin-bottom: 30px;
   }
 
-  @media only screen and (max-width: 600px) {
+  @media (max-width: 600px) {
     
     #logo {
       margin-top: 25%;
