@@ -60,7 +60,8 @@ const JumboWrapper = styled.div`
       margin-top: 25%;
       align-content: center;
       justify-content: center;
-      
+      height: 300px;
+      width: 250px;
       
     }
 
