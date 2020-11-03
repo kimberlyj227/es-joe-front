@@ -37,12 +37,12 @@ const JumboWrapper = styled.div`
   }
 
   h2 {
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: bold;
   }
 
   h3 {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
   }
 
   h4 {
@@ -93,8 +93,8 @@ const Jumbo = () => {
                 id="joe"/>
             </Col>
             <Col sm={12} md={6} id="headings">
-              <h2>ESPRESSO JOE</h2>
-              <h3>-the best part of waking up-</h3>
+              <h2>ESPRESSO JOE TEES</h2>
+              <h3>- the best part of waking up -</h3>
             </Col>
           </Row>
           <Row>
