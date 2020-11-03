@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { Link, Redirect } from "react-router-dom";
-import { Card, Button, Row, Col } from "react-bootstrap";
+import { Card, Button, Row, Col, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { addItem, updateItem, removeItem } from "./cartHelpers";
 import ShowImage from "./ShowImage";
 import moment from "moment";
@@ -33,7 +33,7 @@ const CardWrapper = styled.article`
     background-color: transparent;
     border: 2px solid #ddad49;
     color: #4a494a;
-    padding: 15px;
+    padding: 10px;
     font-size: 18px;
     margin-left: 15px;
     width: 175px;
@@ -68,7 +68,7 @@ const ProductCard = ({
       
           <Link to={`/product/${product._id}`}>
             <Button variant="outline-dark" className="m-2">
-                  View Product
+                  View Details
             </Button>
           </Link>
         
@@ -91,16 +91,23 @@ const ProductCard = ({
   const directToBonfire = (linkToBonfire, link) => {
     return (
       linkToBonfire && (
-        
-          <Button  
-            href={link} 
-            target="_blank"
-            variant="outline-warning" 
-            className="mt-2 mb-2 button"
+        <OverlayTrigger
+          placement="top"
+          overlay={
+            <Tooltip id="tooltip-top">You know you want to</Tooltip>
+          }
+        >
 
-          >
-                  Buy This Shirt!
-          </Button>
+            <Button  
+              href={link} 
+              target="_blank"
+              variant="outline-warning" 
+              className="mt-2 mb-2 button"
+              
+              >
+                    Buy This Shirt!
+            </Button>
+          </OverlayTrigger>
         
       )
     )
@@ -109,9 +116,18 @@ const ProductCard = ({
   const addToCartButton = () => {
     return (
       showAddToCart && (
-        <Button onClick={addToCart} variant="outline-warning" className="mt-2 mb-2">
-                Add to Cart
-        </Button>
+        <OverlayTrigger
+          placement="top"
+          overlay={
+            <Tooltip id="tooltip-top">You know you want to</Tooltip>
+          }
+        >
+          <Button onClick={addToCart} variant="outline-warning" className="mt-2 mb-2">
+                  Buy Subscription
+                 
+          </Button>
+
+        </OverlayTrigger>
 
       )
     )

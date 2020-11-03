@@ -46,13 +46,15 @@ const Product = (props) => {
           <ProductCard 
             product={product}
             showViewProductButton={false}
-            showAddToCart={false}
+            
+            showAddToCart={product._id==="5f9f0a1e1b46df56dc63300a" ? true : false}
+            linkToBonfire={product._id==="5f9f0a1e1b46df56dc63300a" ? false : true}
             
           />
 
         </Col>
         <Col md={4}>
-          <h4> Related Products</h4>
+          <h4> Related Shirts</h4>
           {related.map((p,i) => (
             <div className="mb-3" key={i}>
               <ProductCard
