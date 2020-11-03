@@ -84,6 +84,8 @@ const UpdateProduct = ({ match }) => {
           price: data.price,
           shipping: data.shipping ? 1 : 0,
           quantity: data.quantity,
+          link: data.link,
+          tagline: data.tagline,
           formData: new FormData() 
         })
         // load categories
@@ -213,7 +215,7 @@ const redirectUser = () => {
           </Form.Group>
 
           <Form.Group as={Col} controlId="link">
-            <Form.Label className="text-muted">link</Form.Label>
+            <Form.Label className="text-muted">Link</Form.Label>
             <Form.Control 
               type="text" 
               placeholder="Product Link"

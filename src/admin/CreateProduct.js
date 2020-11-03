@@ -180,7 +180,7 @@ const clickSubmit = e => {
           </Form.Group>
 
           <Form.Group as={Col} controlId="link">
-            <Form.Label className="text-muted">link</Form.Label>
+            <Form.Label className="text-muted">Link</Form.Label>
             <Form.Control 
               type="text" 
               placeholder="Shirt Link"
