@@ -55,13 +55,13 @@ const JumboWrapper = styled.div`
 
   @media only screen and (max-width: 600px) {
     
-    #logo {
-      display: flex
+    #joe {
+      
       margin-top: 25%;
       align-content: center;
       justify-content: center;
-      height: 300px;
-      width: 250px;
+      height: auto;
+      width: 25%;
       
     }
 
