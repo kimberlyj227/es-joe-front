@@ -100,9 +100,14 @@ const ManageProduct = () => {
         </Row>
         <Row>
           <Col md={{ span: 8, offset: 2 }} className="mt-3">
-            <Button block>
+            <Button >
                 <Link to="/admin/dashboard" >
                   Back to Dashboard
+                </Link>
+              </Button>
+            <Button >
+                <Link to="/admin/products" >
+                  Back to Manage Shirts
                 </Link>
               </Button>
           </Col>

@@ -96,13 +96,17 @@ const ProductCard = ({
    }
   }
 
-  const directToBonfire = (linkToBonfire, link) => {
+  const directToBonfire = (linkToBonfire, link, tagline) => {
     return (
       linkToBonfire && (
         <OverlayTrigger
           placement="top"
           overlay={
-            <Tooltip id="tooltip-top">You know you want to</Tooltip>
+            <Tooltip id="tooltip-top">
+              {tagline ? (tagline ) : (
+                "You know you want to"
+              )}
+            </Tooltip>
           }
         >
 
@@ -241,7 +245,7 @@ const ProductCard = ({
          
             {showViewButton(showViewProductButton)}
             {addToCartButton(showAddToCart)}
-            {directToBonfire(linkToBonfire, product.link)}
+            {directToBonfire(linkToBonfire, product.link, product.tagline)}
             {removeItemButton(showRemoveItemBtn)}
             {showCartUpdateOptions(cartUpdate)}
            

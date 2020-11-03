@@ -53,7 +53,7 @@ const UpdateProduct = ({ match }) => {
  const [categories, setCategories] = useState([])
 
 
- const { name, description, price, category, shipping, quantity, createdProduct, redirectToProfile, link, formData} = values;
+ const { name, description, price, category, shipping, quantity, createdProduct, redirectToProfile, link, tagline, formData} = values;
 
   useEffect(() => {
     init(match.params.productId);
@@ -119,6 +119,7 @@ const clickSubmit = e => {
           quantity: "",
           photo: "",
           link: "",
+          tagline: "",
           createdProduct: data.name,
           redirectToProfile: true
         })
@@ -146,7 +147,7 @@ const redirectUser = () => {
           <Form.Label className="text-muted">Name</Form.Label>
           <Form.Control 
             type="text" 
-            placeholder="Product Name"
+            placeholder="Shirt Name"
             name="name"
             value={name}
             onChange={handleChange}
@@ -175,7 +176,7 @@ const redirectUser = () => {
 
       </Form.Row>
         <Form.Group controlId="description">
-          <Form.Label className="text-muted">Product Description</Form.Label>
+          <Form.Label className="text-muted">Shirt Description</Form.Label>
           <Form.Control 
             as="textarea" 
             placeholder="Description"
@@ -186,12 +187,24 @@ const redirectUser = () => {
             required />
         </Form.Group>
 
+        <Form.Group  controlId="tagline">
+          <Form.Label className="text-muted">Shirt  Tagline</Form.Label>
+          <Form.Control 
+            as="textarea" 
+            placeholder="Tagline"
+            name="tagline"
+            value={tagline}
+            onChange={handleChange}
+            autoFocus
+            required />
+        </Form.Group>
+
         <Form.Row>
           <Form.Group as={Col} controlId="price">
             <Form.Label className="text-muted">Price</Form.Label>
             <Form.Control 
               type="number" 
-              placeholder="Product Price"
+              placeholder="Shirt Price"
               name="price"
               value={price}
               onChange={handleChange}
@@ -259,7 +272,7 @@ const redirectUser = () => {
       
       <Form.Row>
         <Button as={Col}  type="submit" onClick={clickSubmit}>
-          Update Product
+          Update Shirt
         </Button> 
 
         <Button as={Col} >

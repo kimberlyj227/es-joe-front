@@ -94,7 +94,7 @@ const Jumbo = () => {
             </Col>
             <Col sm={12} md={6} id="headings">
               <h2>ESPRESSO JOE TEES</h2>
-              <h3>- the best part of waking up -</h3>
+              <h3>- you know you want one -</h3>
             </Col>
           </Row>
           <Row>

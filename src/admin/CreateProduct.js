@@ -49,7 +49,7 @@ const CreateProduct = () => {
  const [error, setError] = useState("");
  const [loading, setLoading] = useState("");
 
- const { name, description, price, categories, category, link, shipping, quantity, createdProduct, formData} = values;
+ const { name, description, price, categories, category, link, tagline, shipping, quantity, createdProduct, formData} = values;
 
  // load categories and set form data
  const init = () => {
@@ -92,6 +92,7 @@ const clickSubmit = e => {
           quantity: "",
           photo: "",
           link: "",
+          tagline: "",
           createdProduct: data.name
         })
         setLoading(false)
@@ -108,7 +109,7 @@ const clickSubmit = e => {
           <Form.Label className="text-muted">Name</Form.Label>
           <Form.Control 
             type="text" 
-            placeholder="Product Name"
+            placeholder="Shirt Name"
             name="name"
             value={name}
             onChange={handleChange}
@@ -141,12 +142,24 @@ const clickSubmit = e => {
       </Form.Row>
 
         <Form.Group  controlId="description">
-          <Form.Label className="text-muted">Product Description</Form.Label>
+          <Form.Label className="text-muted">Shirt Description</Form.Label>
           <Form.Control 
             as="textarea" 
             placeholder="Description"
             name="description"
             value={description}
+            onChange={handleChange}
+            autoFocus
+            required />
+        </Form.Group>
+
+        <Form.Group  controlId="tagline">
+          <Form.Label className="text-muted">Shirt  Tagline</Form.Label>
+          <Form.Control 
+            as="textarea" 
+            placeholder="Tagline"
+            name="tagline"
+            value={tagline}
             onChange={handleChange}
             autoFocus
             required />
@@ -158,7 +171,7 @@ const clickSubmit = e => {
             <Form.Label className="text-muted">Price</Form.Label>
             <Form.Control 
               type="number" 
-              placeholder="Product Price"
+              placeholder="Shirt Price"
               name="price"
               value={price}
               onChange={handleChange}
@@ -170,7 +183,7 @@ const clickSubmit = e => {
             <Form.Label className="text-muted">link</Form.Label>
             <Form.Control 
               type="text" 
-              placeholder="Product Link"
+              placeholder="Shirt Link"
               name="link"
               value={link}
               onChange={handleChange}
@@ -185,7 +198,7 @@ const clickSubmit = e => {
           <Form.Label className="text-muted">Quantity</Form.Label>
           <Form.Control 
             type="number" 
-            placeholder="Product Quantity"
+            placeholder="Shirt Quantity"
             name="quantity"
             value={quantity}
             onChange={handleChange}
@@ -227,7 +240,7 @@ const clickSubmit = e => {
       <Form.Row>
         
           <Button  type="submit" onClick={clickSubmit}>
-            Create Product
+            Create Shirt
           </Button> 
         
 
