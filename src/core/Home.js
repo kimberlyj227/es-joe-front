@@ -54,15 +54,14 @@ const JumboWrapper = styled.div`
   }
 
   @media only screen and (max-width: 600px) {
-    
-    #joe {
-      
+
+    #logo {
       margin-top: 25%;
-      align-content: center;
-      justify-content: center;
-      height: auto;
-      width: 25%;
-      
+    }
+    
+    #joe{
+      width: auto;
+      height: 350px;
     }
 
     h2 {
