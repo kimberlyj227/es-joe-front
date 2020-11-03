@@ -36,7 +36,7 @@ const CardWrapper = styled.article`
     padding: 15px;
     font-size: 18px;
     margin-left: 15px;
-    width: 200px;
+    width: 175px;
   }
 
   .btn:hover {
