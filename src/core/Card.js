@@ -26,12 +26,12 @@ const CardWrapper = styled.article`
   }
 
   p {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .btn {
     background-color: transparent;
-    border: 2px solid #ddad49;
+    border: 1px solid #ddad49;
     color: #4a494a;
     padding: 10px;
     font-size: 18px;
