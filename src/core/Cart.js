@@ -40,7 +40,7 @@ const Cart = () => {
       <h2>
         Your cart is empty
         <br/>
-        <Link to="/shop">Continue Shopping</Link>
+        <Link to="/shirts">Continue Shopping</Link>
       </h2>
     )
   }

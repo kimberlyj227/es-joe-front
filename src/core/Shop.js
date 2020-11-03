@@ -111,6 +111,7 @@ const Shop = () => {
         <Col md={3}>
           <h2>Filter by Categories</h2>
           <ul>
+            
             <Checkbox
               categories={categories}
               handleFilters={(filters) => handleFilters(filters, "category")}
@@ -129,14 +130,16 @@ const Shop = () => {
           <h2 className="mb-4">T-Shirts</h2>
             <Row>
                 {filteredResults.map((product, i) => (
-                  <Col md={6} key={i}>
-                    <ProductCard
-                      
-                      product={product}
-                      showAddToCart={product._id==="5f9f0a1e1b46df56dc63300a" ? true : false}
-                      linkToBonfire={product._id==="5f9f0a1e1b46df56dc63300a" ? false : true}
-                    />
-                  </Col>
+                  product._id !=="5f9f0a1e1b46df56dc63300a" && (
+                    <Col md={6} key={i}>
+                      <ProductCard
+                        
+                        product={product}
+                        showAddToCart={product._id==="5f9f0a1e1b46df56dc63300a" ? true : false}
+                        linkToBonfire={product._id==="5f9f0a1e1b46df56dc63300a" ? false : true}
+                      />
+                    </Col>
+                  )
                 ))}
             <hr/>
             {loadMoreButton()}

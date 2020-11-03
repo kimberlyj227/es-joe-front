@@ -38,11 +38,19 @@ const CardWrapper = styled.article`
     margin-left: 15px;
     width: 175px;
   }
-
+  
   .btn:hover {
     background-color: #ddad49;
     color: #ffffff;
     border: none;
+  }
+  
+  #quantity {
+    margin-left: 15px;
+    padding: 10px;
+    font-size: 18px;
+  
+    width: 250px;
   }
   
 `
@@ -151,7 +159,7 @@ const ProductCard = ({
 
   const showCartUpdateOptions = cartUpdate => {
     return cartUpdate && (
-      <div> 
+      <div id="quantity"> 
         <div className = "input-group mb3">
           <div className="input-group-prepend">
             <span className ="input-group-text">
@@ -174,7 +182,7 @@ const ProductCard = ({
     return (
       showRemoveItemBtn && (
         <Button onClick={() => {removeItem(product._id); setRun(!run)}} variant="outline-danger" className="mt-2 mb-2">
-                Remove from Cart
+                Remove 
         </Button>
 
       )
@@ -225,10 +233,10 @@ const ProductCard = ({
             <p className=" mt-2"><strong>Price: </strong>${product.price}</p>
             <p className=" mt-2"><strong>Category: </strong>{product.category && product.category.name}</p>
             <p className=" mt-2"><strong>Added: </strong>{moment(product.createdAt).fromNow()}</p>
-            {showStock(product.quantity)}
+            {/* {showStock(product.quantity)} */}
             </Col>
           </Row>
-          
+
           <Row >
          
             {showViewButton(showViewProductButton)}

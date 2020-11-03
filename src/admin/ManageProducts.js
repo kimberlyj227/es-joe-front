@@ -5,6 +5,31 @@ import { isAuthenticated } from "../auth";
 import { Col, Row, Badge, Button, Alert, ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { getProducts, deleteProduct } from "./apiAdmin";
+import styled from "styled-components";
+
+const FormWrapper = styled.div`
+  .btn {
+    background-color: transparent;
+    border: 1px solid #ddad49;
+    color: #4a494a;
+    padding: 15px;
+    font-size: 18px;
+    margin-right: 15px;
+
+  }
+  
+
+  .btn:hover {
+    background-color: #ddad49;
+    color: #ffffff;
+    border: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: #4a494a
+  }
+`
 
 
 const ManageProduct = () => {
@@ -42,98 +67,47 @@ const ManageProduct = () => {
    })
  };
 
-// const clickSubmit = e => {
-//   e.preventDefault();
-//   setError("");
-//   setLoading(true);
 
-//   createProduct(user._id, token, formData)
-//     .then(data=> {
-//       if(data.error) {
-//         setError(data.error)
-//       } else {
-//         setValues({
-//           name: "",
-//           description: "",
-//           price: "",
-//           category: "",
-//           shipping: "",
-//           quantity: "",
-//           photo: "",
-//           createdProduct: data.name
-//         })
-//         setLoading(false)
-//       }
-//     })
-// }
-
-
-
- 
-      
-      // <Form.Row>
-      //   <Button as={Col} variant="outline-info" type="submit" onClick={clickSubmit}>
-      //     Create Product
-      //   </Button> 
-
-      //   <Button as={Col} variant="outline-warning">
-      //     <Link to="/admin/dashboard" style={{ color: "#ffc107"}}>
-      //       Back to Dashboard
-      //     </Link>
-      //   </Button>
-
-      // </Form.Row>
-  
- 
-//  const showError = () => (
-//    <Alert variant= "danger" style={{display: error ? "" : "none"}}>
-//      {error}
-//    </Alert>
-//  )
-
-//  const showSuccess = () => (
-//   <Alert variant="success" style={{display: createdProduct ? "" : "none"}}>
-//     <h5>{`${createdProduct} created successfully!`}</h5>
-//   </Alert>
-//  )
- 
-//  const showLoading = () => {
-//    if(loading) {
-//     <Alert variant="info">
-//       <h2>Loading...</h2>
-//     </Alert>
-//    }
-
-//  }
 
   return (
     <Layout
       title="Manage Shirts"
       description="Manage Shirts"
-      className="container mt-5"
+      className="container mt-5 mb-5"
     >
-      <Row>
-        <Col md={{ span: 8, offset: 2 }}>
-          <h2 className="text-center">Total Products: {products.length}</h2>
-          <hr/>
-            <ListGroup>
-              {products.map((product, i) => (
-                  <ListGroup.Item 
-                    key={i}
-                    className="d-flex justify-content-between align-items-center">
-                      <strong>
-                        {product.name}
-                      </strong>
-                      <Link to={`/admin/product/update/${product._id}`}>
-                        <Badge pill variant="info">Update</Badge>
-                      </Link>
-                        <Badge onClick={() => destroy(product._id)} pill variant="danger">Delete</Badge>
-                  </ListGroup.Item>
-              ))}
-            </ListGroup>
-      
-        </Col>
-      </Row>
+      <FormWrapper>
+        <Row>
+          <Col md={{ span: 8, offset: 2 }}>
+            <h2 className="text-center">Total Products: {products.length}</h2>
+            <hr/>
+              <ListGroup>
+                {products.map((product, i) => (
+                    <ListGroup.Item 
+                      key={i}
+                      className="d-flex justify-content-between align-items-center">
+                        <strong>
+                          {product.name}
+                        </strong>
+                        <Link to={`/admin/product/update/${product._id}`}>
+                          <Badge pill style={{background: "#ddad49", color: "#fff"}}>Update</Badge>
+                        </Link>
+                          <Badge onClick={() => destroy(product._id)} pill variant="danger">Delete</Badge>
+                    </ListGroup.Item>
+                ))}
+              </ListGroup>
+        
+          </Col>
+        </Row>
+        <Row>
+          <Col md={{ span: 8, offset: 2 }} className="mt-3">
+            <Button block>
+                <Link to="/admin/dashboard" >
+                  Back to Dashboard
+                </Link>
+              </Button>
+          </Col>
+        </Row>
+      </FormWrapper>
 
     </Layout>
   )

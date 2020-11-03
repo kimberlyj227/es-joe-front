@@ -2,6 +2,7 @@ import React from "react";
 import { Jumbotron, Row, Col, Image } from "react-bootstrap";
 import Nav from "./Nav";
 import Header from "./Header";
+import Footer from "./Footer";
 import styled from "styled-components";
 
 const JumboWrapper = styled.div`
@@ -53,6 +54,7 @@ const Layout = ({ title = "Title", description ="Description", className, childr
         <div className={className}>
           {children}
         </div>
+        <Footer />
     </>
   )
 }

@@ -4,6 +4,29 @@ import { isAuthenticated } from "../auth";
 import { Col, Row, Form, Button, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { createCategory} from "./apiAdmin";
+import styled from "styled-components";
+
+const DivWrapper = styled.div`
+  margin-bottom: 30px;
+
+  .btn {
+    background-color: transparent;
+    border: 1px solid #ddad49;
+    color: #4a494a;
+   
+    font-size: 18px;
+    margin-left: 15px;
+    width: 175px;
+  }
+  
+  .btn:hover {
+    background-color: #ddad49;
+    color: #ffffff;
+    border: none;
+  }
+  
+  
+`  
 
 const CreateCategory = () => {
   const [name, setName] = useState("");
@@ -95,14 +118,17 @@ const CreateCategory = () => {
       description="Add a new category"
       className="container mt-5"
     >
-      <Row>
-        <Col md={{ span: 8, offset: 2 }}>
-          {showSuccess()}
-          {showError()}
-          {newCategoryForm()}
-          
-        </Col>
-      </Row>
+      <DivWrapper>
+        <Row>
+          <Col md={{ span: 8, offset: 2 }}>
+            {showSuccess()}
+            {showError()}
+            {newCategoryForm()}
+            
+          </Col>
+        </Row>
+
+      </DivWrapper>
 
 
     </Layout>

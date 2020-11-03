@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import { Link, withRouter } from "react-router-dom";
-import { FaTshirt, FaHome, FaSignInAlt, FaSignOutAlt, FaShirtsinbulk, FaDog } from "react-icons/fa";
+import { FaTshirt, FaHome, FaSignInAlt, FaSignOutAlt, FaShirtsinbulk, FaDog, FaShoppingCart } from "react-icons/fa";
 import { AiFillDashboard } from "react-icons/ai";
 import { signOut, isAuthenticated } from "../auth";
-// import { totalItems } from "./cartHelpers";
+import { totalItems } from "./cartHelpers";
 
 import styled from "styled-components";
 
@@ -98,19 +98,7 @@ const NavBar = ({ history }) => {
                   </Link>
               </li>
 
-              {/* <li className="nav-item">
-                <Link 
-                  className="nav-link" 
-                  style={isActive(history, "/cart")} 
-                  to="/cart">
-                    Cart {" "} 
-                    <sup>
-                      <small className="cart-badge">
-                        {totalItems()}
-                      </small>
-                    </sup>
-                  </Link>
-              </li> */}
+              
 
               {isAuthenticated() && isAuthenticated().user.role === 0 ? (
                 <li className="nav-item">
@@ -134,6 +122,21 @@ const NavBar = ({ history }) => {
                     </Link>
                 </li>
               )}
+
+              <li className="nav-item">
+                <Link 
+                  className="nav-link" 
+                  style={isActive(history, "/cart")} 
+                  to="/cart">
+                    <FaShoppingCart /> {"  "}
+                    Cart {" "} 
+                    <sup>
+                      <small className="cart-badge">
+                        {totalItems()}
+                      </small>
+                    </sup>
+                  </Link>
+              </li>
 
               {!isAuthenticated() ? (
                 <>

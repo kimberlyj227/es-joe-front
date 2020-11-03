@@ -9,7 +9,7 @@ import styled from "styled-components";
 const FormWrapper = styled.div`
   .btn {
     background-color: transparent;
-    border: 2px solid #ddad49;
+    border: 1px solid #ddad49;
     color: #4a494a;
     padding: 15px;
     font-size: 18px;
