@@ -9,13 +9,9 @@ const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [statusValues, setStatusValues] = useState([])
 
-  const { user, token } =isAuthenticated();
+  const { user, token } = isAuthenticated();
 
-  useEffect(() => {
-    loadOrders();
-    loadStatusValues();
-    
-  }, [])
+ 
 
   const loadOrders = ( ) => {
     listOrders(user._id, token).then(data=> {
@@ -36,7 +32,14 @@ const Orders = () => {
         setStatusValues(data)
       }
     });
-  }
+  };
+
+  useEffect(() => {
+    console.log(user)
+    loadOrders();
+    loadStatusValues();
+    
+  }, [])
 
   const showOrderLength = orders => {
     if(orders.length > 0) {

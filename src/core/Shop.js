@@ -102,13 +102,13 @@ const Shop = () => {
 
   return (
     <Layout
-      title="Shop Page"
+      title="T-Shirt Gallery"
       description="Find a shirt. Buy a shirt."
       className="container-fluid mt-5"
     >
       
       <Row>
-        <Col md={4}>
+        <Col md={3}>
           <h2>Filter by Categories</h2>
           <ul>
             <Checkbox
@@ -125,16 +125,18 @@ const Shop = () => {
             />
           </div> */}
         </Col>
-        <Col md={8}>
+        <Col md={9}>
           <h2 className="mb-4">T-Shirts</h2>
             <Row>
                 {filteredResults.map((product, i) => (
-                  <div className="col-4 mb-3" key={i}>
+                  <Col md={6} key={i}>
                     <ProductCard
                       
                       product={product}
+                      showAddToCart={product._id==="5f9f0a1e1b46df56dc63300a" ? true : false}
+                      linkToBonfire={product._id==="5f9f0a1e1b46df56dc63300a" ? false : true}
                     />
-                  </div>
+                  </Col>
                 ))}
             <hr/>
             {loadMoreButton()}

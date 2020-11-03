@@ -1,14 +1,57 @@
 import React, {useState} from "react";
 import { Link, Redirect } from "react-router-dom";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Row, Col } from "react-bootstrap";
 import { addItem, updateItem, removeItem } from "./cartHelpers";
 import ShowImage from "./ShowImage";
 import moment from "moment";
+import styled from "styled-components";
+
+const CardWrapper = styled.article`
+  .shirt-card {
+    padding: 10px;
+    line-height: 2rem;
+    font-family: "Roboto Slab", serif;
+  }
+  
+  .shirtImg {
+    height: 200px !important;
+  }
+
+  #info {
+    margin-top: 5%;
+  }
+
+  h5 {
+    font-size: 30px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  .btn {
+    background-color: transparent;
+    border: 2px solid #ddad49;
+    color: #4a494a;
+    padding: 15px;
+    font-size: 18px;
+    margin-left: 15px;
+    width: 250px;
+  }
+
+  .btn:hover {
+    background-color: #ddad49;
+    color: #ffffff;
+    border: none;
+  }
+  
+`
 
 const ProductCard = ({ 
   product, 
   showViewProductButton = true, 
   showAddToCart = true, 
+  linkToBonfire = true, 
   cartUpdate=false, 
   showRemoveItemBtn= false,
   setRun = f => f,
@@ -45,27 +88,38 @@ const ProductCard = ({
    }
   }
 
-  const addToCartButton = (showAddToCart, link) => {
+  const directToBonfire = (linkToBonfire, link) => {
     return (
-      showAddToCart && (
+      linkToBonfire && (
         
           <Button  
             href={link} 
             target="_blank"
             variant="outline-warning" 
-            className="mt-2 mb-2"
+            className="mt-2 mb-2 button"
 
           >
-                  Buy Now!
+                  Buy This Shirt!
           </Button>
         
       )
     )
   }
 
+  const addToCartButton = () => {
+    return (
+      showAddToCart && (
+        <Button onClick={addToCart} variant="outline-warning" className="mt-2 mb-2">
+                Add to Cart
+        </Button>
+
+      )
+    )
+  }
+
   const showStock = (quantity) => {
     return quantity > 0 ? (
-      <span className="badge badge-warning text-white badge-pill">In Stock</span>
+      <span className="badge badge-secondary text-white ">In Stock</span>
       ) : (
       <span className="badge badge-danger badge-pill">Out of Stock</span>
       );
@@ -113,31 +167,64 @@ const ProductCard = ({
 
   return (
     
-      <Card >
-        <Card.Header className="name">
-          <h4>{product.name}</h4>
-        </Card.Header>
-        <Card.Body>
-          {shouldRedirect(redirect)}
-          <ShowImage 
-            item={product}
-            url="product"
-          />
-          <p className="lead mt-2">{product.description}</p>
-          <p className=" mt-2"><strong>Price: </strong>${product.price}</p>
-          <p className=" mt-2"><strong>Category: </strong>{product.category && product.category.name}</p>
-          <p className=" mt-2"><strong>Added: </strong>{moment(product.createdAt).fromNow()}</p>
+      // <Card >
+      //   <Card.Header className="name">
+      //     <h4>{product.name}</h4>
+      //   </Card.Header>
+      //   <Card.Body>
+      //     {shouldRedirect(redirect)}
+      //     <ShowImage 
+      //       item={product}
+      //       url="product"
+      //     />
+      //     <p className="lead mt-2">{product.description}</p>
+      //     <p className=" mt-2"><strong>Price: </strong>${product.price}</p>
+      //     <p className=" mt-2"><strong>Category: </strong>{product.category && product.category.name}</p>
+      //     <p className=" mt-2"><strong>Added: </strong>{moment(product.createdAt).fromNow()}</p>
           
+      //       {showStock(product.quantity)}
+          
+      //   </Card.Body>
+      //   <Card.Footer>
+      //       {showViewButton(showViewProductButton)}
+      //       {addToCartButton(showAddToCart, product.link)}
+      //       {removeItemButton(showRemoveItemBtn)}
+      //       {showCartUpdateOptions(cartUpdate)}
+      //   </Card.Footer>
+      // </Card>
+      <CardWrapper>
+        <article className="shirt-card">
+          <Row>
+            <Col>
+            {shouldRedirect(redirect)}
+              <ShowImage 
+                item={product}
+                url="product"
+              />
+            </Col>
+
+            <Col id="info">
+            <h5>{product.name}</h5>
+            <p className=" mt-2">{product.description}</p>
+            <p className=" mt-2"><strong>Price: </strong>${product.price}</p>
+            <p className=" mt-2"><strong>Category: </strong>{product.category && product.category.name}</p>
+            <p className=" mt-2"><strong>Added: </strong>{moment(product.createdAt).fromNow()}</p>
             {showStock(product.quantity)}
+            </Col>
+          </Row>
           
-        </Card.Body>
-        <Card.Footer>
+          <Row >
+         
             {showViewButton(showViewProductButton)}
-            {addToCartButton(showAddToCart, product.link)}
+            {addToCartButton(showAddToCart)}
+            {directToBonfire(linkToBonfire, product.link)}
             {removeItemButton(showRemoveItemBtn)}
             {showCartUpdateOptions(cartUpdate)}
-        </Card.Footer>
-      </Card>
+           
+          </Row>
+          <hr/>
+        </article>
+      </CardWrapper>
     
   )
 }

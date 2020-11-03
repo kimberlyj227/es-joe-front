@@ -28,6 +28,10 @@ const AdminDashboard = () => {
             <ListGroup.Item>
               <Link to="/admin/orders"> View and Manage Orders</Link>
             </ListGroup.Item>
+
+            <ListGroup.Item>
+              <Link to={`/user/dashboard`}> User Dashboard</Link>
+            </ListGroup.Item>
             
           </ListGroup>
         </Card.Body>

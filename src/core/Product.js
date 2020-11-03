@@ -46,6 +46,8 @@ const Product = (props) => {
           <ProductCard 
             product={product}
             showViewProductButton={false}
+            showAddToCart={false}
+            
           />
 
         </Col>
@@ -55,6 +57,7 @@ const Product = (props) => {
             <div className="mb-3" key={i}>
               <ProductCard
                 product={p}
+                showAddToCart={false}
               />
             </div>
           ))}

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { Link, withRouter } from "react-router-dom";
-import { FaTshirt, FaHome, FaSignInAlt } from "react-icons/fa";
+import { FaTshirt, FaHome, FaSignInAlt, FaSignOutAlt, FaShirtsinbulk, FaDog } from "react-icons/fa";
+import { AiFillDashboard } from "react-icons/ai";
 import { signOut, isAuthenticated } from "../auth";
 // import { totalItems } from "./cartHelpers";
 
@@ -19,6 +20,7 @@ const NavWrapper = styled.div`
   text-transform: uppercase;
   line-height: 1;
   text-align: center;
+  z-index: 1;
  
   a {
     color: ${yellow} !important;
@@ -32,9 +34,9 @@ const NavWrapper = styled.div`
 
 const isActive = (history, path) => {
   if(history.location.pathname === path) {
-    return {color: yellow}
-  } else {
     return {color: "#fff"}
+  } else {
+    return {color: yellow}
   }
 }
 
@@ -48,9 +50,15 @@ const NavBar = ({ history }) => {
 
   return (
     <>
-      <NavWrapper>
-          <div>
-          <ul className="nav nav-tabs">
+      <NavWrapper  >
+        <nav className="navbar navbar-expand-lg navbar-dark">
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+
+        
+            <div className="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul className="navbar-nav">
             
               <li className="nav-item">
                 <Link 
@@ -79,7 +87,8 @@ const NavBar = ({ history }) => {
                   className="nav-link" 
                   style={isActive(history, "/subscription")} 
                   to="/subscription">
-                    Shirt of the Month
+                    <FaShirtsinbulk/>
+                    {"  "}Shirt of the Month
                     
                   </Link>
               </li>
@@ -104,6 +113,7 @@ const NavBar = ({ history }) => {
                     className="nav-link" 
                     style={isActive(history, "/user/dashboard")} 
                     to="/user/dashboard">
+                      <AiFillDashboard/> {"  "}
                       Dashboard
                     </Link>
                 </li>
@@ -114,7 +124,8 @@ const NavBar = ({ history }) => {
                     className="nav-link" 
                     style={isActive(history, "/admin/dashboard")} 
                     to="/admin/dashboard">
-                      Dashboard
+                      <AiFillDashboard/> {"  "}
+                         Dashboard
                     </Link>
                 </li>
               )}
@@ -135,6 +146,7 @@ const NavBar = ({ history }) => {
                   <Link 
                     className="nav-link" 
                     style={isActive(history, "/signup")} to="/signup">
+                      <FaDog/> {"  "}
                       Sign Up
                     </Link>
                 </li>
@@ -147,14 +159,16 @@ const NavBar = ({ history }) => {
                     onClick={() => signOut(() => {
                       history.push("/");
                     })}>
-                      Sign Out
+                      <FaSignOutAlt/>
+                  {"  "}Sign Out
                     </span>
                 </li>
               )}
 
           
-          </ul>
-        </div>
+            </ul>
+          </div>
+        </nav>
       </NavWrapper>
       
         

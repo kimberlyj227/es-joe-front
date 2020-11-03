@@ -11,10 +11,10 @@ const CornerWrapper = styled.div`
   border-radius: 50%;
   height: 100px;
   width: 100px;
-  box-shadow: 5px 10px 18px #000;
+  
   transition: all 0.1s ease-in-out;
 
-  position: fixed;
+  position: absolute;
   bottom: 50px;
   right: 50px;
 
@@ -36,6 +36,16 @@ const CornerWrapper = styled.div`
       transition: background 2s;
     }   
   }
+
+  @media only screen and (max-width: 600px) {
+    height: 50px;
+    width: 50px;
+    font-size: 25px;
+    line-height: 50px;
+  }
+  
+
+
 `
 const StyleModal = styled(Modal)`
 
@@ -84,7 +94,10 @@ const ShirtModal = props => {
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={props.onHide} variant="light" className="button">Close</Button>
-          <Button onClick={props.onHide} variant="primary" className="button">Subscribe</Button>
+          <Link to="/subscription">
+
+            <Button  variant="primary" className="button">Subscribe</Button>
+          </Link>
           {!isAuthenticated() && (
             <Link to="/signin">
               <Button  variant="dark" className="button">Login</Button>

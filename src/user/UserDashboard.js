@@ -1,18 +1,35 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth";
-import { Card, ListGroup, Col, Row } from "react-bootstrap";
+import { Card, ListGroup, Col, Row, Button } from "react-bootstrap";
 import { Link } from "react-router-dom"
-import { getPurchaseHistory } from "./apiUser";
+import { getPurchaseHistory, read, update } from "./apiUser";
 import moment from "moment";
+import UpdateModal from "./UpdateModal";
+import UserContext from "./UserContext";
 
 const Dashboard = () => {
   const {user: {_id, name, email, role}} = isAuthenticated();
   const token = isAuthenticated().token;
   const [history, setHistory] = useState([]);
+  const [error, setError] = useState(false);
+  const [preferences, setPreferences] = useState({
+    color1: "",
+    color2: "",
+    color3: "",
+    size: ""
+  })
+
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
+
+  const {size, color1, color2, color3} = preferences;
+
+ 
 
   useEffect(() => {
     init(_id, token);
+    getUser(_id)
   }, []);
 
   const init =(userId, token) => {
@@ -23,8 +40,24 @@ const Dashboard = () => {
         } else {
           setHistory(data)
         }
-      })
+      });
+
   }
+
+  const getUser = (userId) => {
+    read(userId, token).then(data => {
+      if (data.error) {
+        setError(true)
+      } else {
+        setPreferences({...preferences,
+          color1: data.shirtColor1,
+          color2: data.shirtColor2,
+          color3: data.shirtColor3,
+          size: data.shirtSize
+        })
+      }
+    });
+  };
 
   const userLinks = () => {
     return (
@@ -38,6 +71,22 @@ const Dashboard = () => {
 
             <ListGroup.Item>
               <Link to={`/profile/${_id}`}>Update Profile</Link>
+            </ListGroup.Item>
+
+            <ListGroup.Item>
+            {isAuthenticated() && isAuthenticated().user.role === 1 ? (
+                
+                  <Link 
+                    
+                    to="/admin/dashboard">
+                      Admin Dashboard
+                    </Link>
+                
+
+              ) : (
+                
+                  null
+              )}
             </ListGroup.Item>
             
           </ListGroup>
@@ -64,8 +113,26 @@ const Dashboard = () => {
   const userHistory = (history) => {
     return (
       <Card className="mb-5">
-        <Card.Header><h4>Subscription History</h4></Card.Header>
+        <Card.Header><h4>Subscription Information and History</h4></Card.Header>
         <Card.Body>
+          <ListGroup>
+            <ListGroup.Item><strong>Shirt Size:</strong> {size}</ListGroup.Item>
+            <ListGroup.Item><strong>Color Preference 1:</strong>  {color1}</ListGroup.Item>
+            <ListGroup.Item><strong>Color Preference 2:</strong>  {color2}</ListGroup.Item>
+            <ListGroup.Item><strong>Color Preference 3:</strong>  {color3}</ListGroup.Item>
+            
+            <ListGroup.Item>
+              <Button 
+                className="button"
+                variant="light"
+                onClick={() => toggle()}
+              >  
+                Update Preferences
+              </Button>  
+            </ListGroup.Item>
+           </ListGroup>
+          
+          <hr/>
           <ListGroup>
             <ListGroup.Item>
               {history.map((h, i) =>(
@@ -92,6 +159,29 @@ const Dashboard = () => {
     )
   }
 
+  const handleInputChange = e => {
+    const { name, value } = e.target;
+    setPreferences({...preferences, [name]: value})
+  }
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+
+    update(_id, token, {
+      shirtSize: size,
+      shirtColor1: color1,
+      shirtColor2: color2,
+      shirtColor3: color3
+    })
+      .then(res => {
+        console.log(res)
+        setModal(false)
+      })
+      .catch(err => console.log(err));
+    
+   
+  }
+
   
 
   return (
@@ -107,6 +197,14 @@ const Dashboard = () => {
         <Col md={9}>
           {userInfo()}
           {userHistory(history)}
+          <UserContext.Provider 
+            value={{_id, preferences, toggle, modal, handleInputChange, handleFormSubmit}}
+          >
+
+            <UpdateModal />
+
+          </UserContext.Provider>
+
         </Col>
       </Row>
 

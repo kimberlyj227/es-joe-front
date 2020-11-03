@@ -4,10 +4,13 @@ import { isAuthenticated } from "../auth";
 import { Form, Button, Col, Row, Alert } from "react-bootstrap";
 import { Link, Redirect } from "react-router-dom";
 import { read, update, updateUser } from "./apiUser";
+import UserContext from "./UserContext";
+
 
 const Profile = ({match}) => {
   const { token } = isAuthenticated();
   const userId = match.params.userId;
+  
   
   const [userInfo, setUserInfo] = useState({
     name: "",
@@ -52,7 +55,7 @@ const Profile = ({match}) => {
 
   const redirectUser = success => {
     if(success) {
-      return <Redirect to="/cart" />
+      return <Redirect to="/user/dashboard" />
     }
   }
 
@@ -61,6 +64,8 @@ const Profile = ({match}) => {
     setError(false);
     setUserInfo({...userInfo, [name]: value})
   }
+
+ 
 
   const showError = () => (
     <Alert variant= "danger" style={{display: error ? "" : "none"}}>
@@ -115,7 +120,7 @@ const Profile = ({match}) => {
         </Form.Group>
 
       <Form.Row>
-        <Button as={Col} variant="outline-info" type="submit" onClick={clickSubmit}>
+        <Button as={Col} variant="outline-warning" type="submit" onClick={clickSubmit}>
           Save Changes
         </Button> 
 
@@ -130,7 +135,7 @@ const Profile = ({match}) => {
     <Layout
       title="User Profile"
       description={`Hello ${name}! Update your Profile`}
-      className="container-fluid"
+      className="container-fluid col-md-8 offset-md-2 mt-5"
     >
       <h2>Profile Update</h2>
       {profileUpdate(name, email, password)}

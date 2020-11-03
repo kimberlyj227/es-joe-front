@@ -4,31 +4,33 @@ import styled from "styled-components";
 
 
 const CircleWrapper = styled.div`
-
-#container {
-  margin: 0%;
+.rotate {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
 }
-
 #circle { 
-  position: relative; 
-  width: 540px; 
   padding-bottom: 100%; 
   overflow: hidden; 
   
 }
 
 #circle text { 
+  position: relative;
   margin-bottom: 128px;
   font-family: "Roboto Slab", serif; 
   font-size: 20px;
+  
 }
 
 #circle svg { 
   position: absolute;
-  
-   
-    width: 100%; 
-    height: 300px;
+    bottom: -80px;
+    right: -88px;
+    width: 350px;
+    height: 350px;
+
 
     -webkit-animation-name: rotate;
        -moz-animation-name: rotate;
@@ -74,6 +76,12 @@ const CircleWrapper = styled.div`
       to { transform: rotate(0); }
   }
 
+  @media only screen and (max-width: 600px) {
+    
+      display: none;
+    
+  }
+
  
 
 `
@@ -86,7 +94,7 @@ const CircleText = () => {
   return (
 
     <CircleWrapper>
-      <div className="rotate" id="container"> 
+      <div className="rotate"> 
         <div className="circTxt" id="circle">
           <svg 
             version="1.1" 

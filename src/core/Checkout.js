@@ -1,10 +1,30 @@
 import React, { useState, useEffect } from "react";
 import DropIn from "braintree-web-drop-in-react";
 import {  getBraintreeClientToken, processPayment, createOrder } from "./apiCore";
-import { emptyCart } from "./cartHelpers";
+import { emptyCart, totalItems } from "./cartHelpers";
 import {  Button, Alert, Form } from "react-bootstrap";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+const CheckoutWrapper = styled.article`
+.btn {
+  padding: 15px;
+  background-color: #ddad49;
+  color: #ffffff;
+  border: none;
+  font-size: 18px;
+}
+
+  .btn:hover {
+    background-color: transparent;
+    color: #4a494a;
+    border: 2px solid #ddad49;
+  }
+
+  
+  
+`
 
 const Checkout =({products, setRun = f => f, run = undefined}) => {
 
@@ -23,7 +43,9 @@ const Checkout =({products, setRun = f => f, run = undefined}) => {
   const token = isAuthenticated() && isAuthenticated().token;
 
   useEffect(() => {
-    getToken(userId, token)
+    getToken(userId, token);
+    console.log(userId)
+    console.log(token)
   }, [])
 
 
@@ -54,7 +76,7 @@ const Checkout =({products, setRun = f => f, run = undefined}) => {
         </div>
       ) : (
         <Link to="/signin">
-          <Button variant="info">
+          <Button >
             Sign In to Checkout
           </Button>
         </Link>
@@ -76,7 +98,8 @@ const Checkout =({products, setRun = f => f, run = undefined}) => {
         // console.log("send none and total to process ", nonce, getTotal(products))
         const paymentData= {
           paymentMethodNonce: nonce,
-          amount: getTotal(products)
+          // amount: getTotal(products)
+          amount: "20"
         }
 
         processPayment(userId, token, paymentData)
@@ -91,7 +114,7 @@ const Checkout =({products, setRun = f => f, run = undefined}) => {
             }
 
             createOrder(userId, token, createOrderData);
-            //empty cart
+            // empty cart
             emptyCart(() => {
               setRun(!run)
               console.log("payment success and empty cart")
@@ -124,7 +147,7 @@ const Checkout =({products, setRun = f => f, run = undefined}) => {
   const showSuccess = (success) => {
     return (
       <Alert 
-      variant="info"
+      variant="warning"
       style= {{ display: success ? "" : "none"}}
       >
         Thank you! Payment successful.
@@ -172,7 +195,7 @@ const Checkout =({products, setRun = f => f, run = undefined}) => {
 
             }} onInstance={i => (data.instance = i)}
             />
-            <Button onClick={buy} variant="success" className="btn-block">
+            <Button onClick={buy}  className="btn-block">
               Buy Now!
             </Button>
           </div>
@@ -182,18 +205,19 @@ const Checkout =({products, setRun = f => f, run = undefined}) => {
     )
   }
 
-  
-
-
   return (
-    <div>
-      {/* <h2> Total: ${getTotal()}</h2> */}
-      {showLoading(loading)}
-      {showSuccess(success)}
-      {showError(error)}
-      {showCheckout()}
+    <CheckoutWrapper>
 
-    </div>
+      <div>
+        <h2> Total: ${getTotal()}</h2>
+        {/* <h2> Total: $20</h2> */}
+        {showLoading(loading)}
+        {showSuccess(success)}
+        {showError(error)}
+        {showCheckout()}
+
+      </div>
+    </CheckoutWrapper>
   )
 }
 

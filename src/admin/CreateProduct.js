@@ -4,6 +4,31 @@ import { isAuthenticated } from "../auth";
 import { Col, Row, Form, Button, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { createProduct, getCategories } from "./apiAdmin";
+import styled from "styled-components";
+
+const FormWrapper = styled.div`
+  .btn {
+    background-color: transparent;
+    border: 2px solid #ddad49;
+    color: #4a494a;
+    padding: 15px;
+    font-size: 18px;
+    margin-right: 15px;
+
+  }
+  
+
+  .btn:hover {
+    background-color: #ddad49;
+    color: #ffffff;
+    border: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: #4a494a
+  }
+`
 
 const CreateProduct = () => {
  const { user, token } = isAuthenticated();
@@ -66,6 +91,7 @@ const clickSubmit = e => {
           shipping: "",
           quantity: "",
           photo: "",
+          link: "",
           createdProduct: data.name
         })
         setLoading(false)
@@ -75,7 +101,7 @@ const clickSubmit = e => {
 
  const newPostForm = () => {
    return (
-
+    <FormWrapper>
     <Form className="mb-3" onSubmit={clickSubmit}>
       <Form.Row>
         <Form.Group as={Col} controlId="name">
@@ -199,19 +225,22 @@ const clickSubmit = e => {
       </Form.Row>
       
       <Form.Row>
-        <Button as={Col} variant="outline-info" type="submit" onClick={clickSubmit}>
-          Create Product
-        </Button> 
+        
+          <Button  type="submit" onClick={clickSubmit}>
+            Create Product
+          </Button> 
+        
 
-        <Button as={Col} variant="outline-warning">
-          <Link to="/admin/dashboard" style={{ color: "#ffc107"}}>
-            Back to Dashboard
-          </Link>
-        </Button>
+          <Button >
+            <Link to="/admin/dashboard" >
+              Back to Dashboard
+            </Link>
+          </Button>
 
       </Form.Row>
   
     </Form>
+  </FormWrapper>
   )
  }
  

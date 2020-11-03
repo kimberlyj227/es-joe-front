@@ -18,6 +18,7 @@ const JumboWrapper = styled.div`
     display: flex;
     align-content: center;
     justify-content: center;
+    
   }
 
   #headings {
@@ -51,6 +52,25 @@ const JumboWrapper = styled.div`
   .nav {
     margin-bottom: 30px;
   }
+
+  @media only screen and (max-width: 600px) {
+    
+    #logo {
+      margin-top: 25%;
+      align-content: center;
+      justify-content: center;
+    }
+
+    h2{
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    h3 {
+      font-size: 2rem;
+    }
+  
+  }
 `
 
 const Jumbo = () => {
@@ -74,8 +94,11 @@ const Jumbo = () => {
               <h3>cool tag line</h3>
             </Col>
           </Row>
-          <CircleText/>
-          <CornerIcon/>
+          <Row>
+            <CircleText/>
+            <CornerIcon/>
+          </Row>
+
         </Jumbotron>
       </JumboWrapper>
       

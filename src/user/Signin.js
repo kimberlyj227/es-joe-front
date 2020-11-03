@@ -7,8 +7,8 @@ import { Form, Button, Alert } from "react-bootstrap"
 
 const Signin = () => {
   const [values, setValues] = useState({
-    email: "buddy@gmail.com",
-    password: "borkk5",
+    email: "",
+    password: "",
     error: "",
     loading: false,
     redirectToReferrer: false

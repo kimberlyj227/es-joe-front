@@ -3,47 +3,30 @@ import Layout from "./Layout";
 import ProductCard from "./Card";
 import Checkout from "./Checkout";
 import { getCart } from "./cartHelpers";
-import { read } from "./apiCore";
 import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 
-const Subscription = () => {
-  //shirt of the month sub id
-  const subscription = "5f9f0a1e1b46df56dc63300a"
+const Cart = () => {
   const [items, setItems] = useState([]);
   const [run, setRun] = useState(false);
-  
 
   useEffect(() => {
-    // setItems(getCart())
-    loadSingleProduct(subscription)
-  }, []);
+    setItems(getCart())
+  }, [run]);
 
-  const loadSingleProduct = (productId) => {
-    read(productId).then(data => {
-      if(data.error) {
-        console.log(data.error)
-      } else {
-        setItems([data]);
-      }
-    })
-  };
-
-  
   const showItems = (items) => {
     return (
       <div>
-        <h2> Shirt of the Month Club </h2>
+        <h2> Your cart has {`${items.length}`} items. </h2>
         <hr/>
         {items.map((product, i) => (
-          
           <ProductCard 
             key={i}
             product={product}
-            showAddToCart={true}
+            showAddToCart={false}
+            cartUpdate={true}
             linkToBonfire={false}
-            // cartUpdate={true}
-            // showRemoveItemBtn={true}
+            showRemoveItemBtn={true}
             setRun={setRun}
             run={run}
           />
@@ -64,27 +47,28 @@ const Subscription = () => {
 
   return (
     <Layout
-    title="Shirt of the Month"
-    description="You're one of the lucky ones"
-    className="container-fluid mt-5"
+      title="Shopping Cart"
+      description="Manage Cart Items"
+      className="container-fluid"
     >
       
-    {console.log(items, items.length)}
       <Row>
         <Col md={6}>
-       
-            {showItems(items)}
-          
+          {items.length > 0 ? (
+            showItems(items)
+          ) : (
+            noItems()
+          )}
         </Col>
 
         <Col md={6}>
-          <h2 className="mb-4">Something about shirt of the month</h2>
+          <h2 className="mb-4">Cart Summary</h2>
           <hr/>
-          {/* <Checkout
+          <Checkout
             products={items}
             run={run}
             setRun={setRun}
-          /> */}
+          />
         </Col>
         
       </Row>
@@ -93,4 +77,4 @@ const Subscription = () => {
   )
 }
 
-export default Subscription;
+export default Cart;

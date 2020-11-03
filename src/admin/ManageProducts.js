@@ -6,6 +6,7 @@ import { Col, Row, Badge, Button, Alert, ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { getProducts, deleteProduct } from "./apiAdmin";
 
+
 const ManageProduct = () => {
  const { user, token } = isAuthenticated();
  const [products, setProducts] = useState([]);
@@ -107,9 +108,9 @@ const ManageProduct = () => {
 
   return (
     <Layout
-      title="Manage Products"
-      description="Manage Products"
-      className="container"
+      title="Manage Shirts"
+      description="Manage Shirts"
+      className="container mt-5"
     >
       <Row>
         <Col md={{ span: 8, offset: 2 }}>
