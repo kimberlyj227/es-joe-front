@@ -7,6 +7,7 @@ const FooterWrapper = styled.div`
     height: 250px;
     background-image: url(${process.env.PUBLIC_URL}/images/background.png);
     background-size: cover;
+    margin-top: 30px;
     
   }
 

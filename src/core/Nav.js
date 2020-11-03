@@ -160,6 +160,7 @@ const NavBar = ({ history }) => {
                 </li>
                 </>
               ) : (
+                
                 <li className="nav-item">
                   <span 
                     className="nav-link" 
