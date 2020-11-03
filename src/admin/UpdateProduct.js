@@ -53,7 +53,7 @@ const UpdateProduct = ({ match }) => {
  const [categories, setCategories] = useState([])
 
 
- const { name, description, price, category, shipping, quantity, createdProduct, redirectToProfile, formData} = values;
+ const { name, description, price, category, shipping, quantity, createdProduct, redirectToProfile, link, formData} = values;
 
   useEffect(() => {
     init(match.params.productId);
@@ -118,6 +118,7 @@ const clickSubmit = e => {
           shipping: "",
           quantity: "",
           photo: "",
+          link: "",
           createdProduct: data.name,
           redirectToProfile: true
         })
@@ -185,17 +186,31 @@ const redirectUser = () => {
             required />
         </Form.Group>
 
-        <Form.Group  controlId="price">
-          <Form.Label className="text-muted">Price</Form.Label>
-          <Form.Control 
-            type="number" 
-            placeholder="Product Price"
-            name="price"
-            value={price}
-            onChange={handleChange}
-            autoFocus
-            required />
-        </Form.Group>
+        <Form.Row>
+          <Form.Group as={Col} controlId="price">
+            <Form.Label className="text-muted">Price</Form.Label>
+            <Form.Control 
+              type="number" 
+              placeholder="Product Price"
+              name="price"
+              value={price}
+              onChange={handleChange}
+              autoFocus
+              required />
+          </Form.Group>
+
+          <Form.Group as={Col} controlId="link">
+            <Form.Label className="text-muted">link</Form.Label>
+            <Form.Control 
+              type="text" 
+              placeholder="Product Link"
+              name="link"
+              value={link}
+              onChange={handleChange}
+              autoFocus
+              required />
+          </Form.Group>
+        </Form.Row>
       
 
       <Form.Row>
