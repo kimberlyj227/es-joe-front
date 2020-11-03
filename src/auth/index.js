@@ -1,4 +1,7 @@
 import { API } from "../config";
+import {
+   emptyCart
+} from "../core/cartHelpers"
 
 export const isAuthenticated = () => {
   if(typeof window == "undefined") {
@@ -63,6 +66,7 @@ export const signOut = (next) => {
       method: "GET",
     })
     .then(res => {
+      emptyCart();
       console.log("signout", res);
     })
     .catch(err => console.log(err));
