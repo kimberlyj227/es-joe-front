@@ -42,6 +42,9 @@ const CornerWrapper = styled.div`
     width: 50px;
     font-size: 25px;
     line-height: 50px;
+    position: absolute;
+    top: 50px;
+    left: 50px;
   }
   
 
