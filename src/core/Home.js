@@ -26,8 +26,8 @@ const JumboWrapper = styled.div`
   }
 
   #joe{
-    max-width: 70%;
-    height: auto;
+    width: auto;
+    max-height: 500px;
   }
 
   h2, h3, h4{
@@ -36,7 +36,7 @@ const JumboWrapper = styled.div`
     text-align: center;
   }
 
-  h2{
+  h2 {
     font-size: 5rem;
     font-weight: bold;
   }
