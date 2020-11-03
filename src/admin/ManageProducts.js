@@ -105,11 +105,7 @@ const ManageProduct = () => {
                   Back to Dashboard
                 </Link>
               </Button>
-            <Button >
-                <Link to="/admin/products" >
-                  Back to Manage Shirts
-                </Link>
-              </Button>
+            
           </Col>
         </Row>
       </FormWrapper>

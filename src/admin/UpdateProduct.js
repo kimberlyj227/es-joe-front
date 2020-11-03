@@ -275,11 +275,18 @@ const redirectUser = () => {
           Update Shirt
         </Button> 
 
+        <Button >
+          <Link to="/admin/products" >
+            Back to Manage Shirts
+          </Link>
+        </Button>
+
         <Button as={Col} >
           <Link to="/admin/dashboard" >
             Back to Dashboard
           </Link>
         </Button>
+
 
       </Form.Row>
   
