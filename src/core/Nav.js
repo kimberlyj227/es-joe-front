@@ -19,7 +19,7 @@ const NavWrapper = styled.div`
   font-family: "Roboto Slab";
   text-transform: uppercase;
   line-height: 1;
-  text-align: center;
+  text-align: right;
   z-index: 1;
  
   a {
@@ -29,6 +29,11 @@ const NavWrapper = styled.div`
   a:hover {
     text-decoration: none;
     color: "#ffffff";
+  }
+
+  @media only screen and (max-width: 600px) {
+    padding: 0;
+    
   }
 `
 
