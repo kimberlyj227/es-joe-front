@@ -23,12 +23,12 @@ const NavWrapper = styled.div`
   z-index: 1;
  
   a {
-    color: ${yellow} !important;
+    color: ${yellow} 
   }
 
   a:hover {
     text-decoration: none;
-    color: "#ffffff";
+    color: "#fff";
   }
 
   @media only screen and (max-width: 600px) {
