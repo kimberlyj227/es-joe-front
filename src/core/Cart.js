@@ -40,7 +40,7 @@ const Cart = () => {
       <h2>
         Your cart is empty
         <br/>
-        <Link to="/shirts">Continue Shopping</Link>
+        <Link to="/shirts">Checkout our current shirts!</Link>
       </h2>
     )
   }
@@ -53,7 +53,9 @@ const Cart = () => {
     >
       
       <Row>
-        <Col md={6}>
+        <Col 
+        // md={6}
+        >
           {items.length > 0 ? (
             showItems(items)
           ) : (
@@ -61,7 +63,7 @@ const Cart = () => {
           )}
         </Col>
 
-        <Col md={6}>
+        {/* <Col md={6}>
           <h2 className="mb-4">Cart Summary</h2>
           <hr/>
           <Checkout
@@ -69,7 +71,7 @@ const Cart = () => {
             run={run}
             setRun={setRun}
           />
-        </Col>
+        </Col> */}
         
       </Row>
       
