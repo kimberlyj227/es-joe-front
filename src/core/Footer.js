@@ -21,6 +21,7 @@ const FooterWrapper = styled.div`
 
   #joe {
     height: 150px;
+    width: auto:
   }
 
   p {
