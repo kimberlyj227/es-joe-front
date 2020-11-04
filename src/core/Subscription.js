@@ -69,9 +69,9 @@ const Subscription = () => {
     className="container-fluid mt-5"
     >
       
-    {console.log(items, items.length)}
       <Row>
-        <Col md={6}>
+        <h2>SHIRT OF THE MONTH CLUB COMING SOON!</h2>
+        {/* <Col md={6}>
        
             {showItems(items)}
           
@@ -80,12 +80,12 @@ const Subscription = () => {
         <Col md={6}>
           <h2 className="mb-4">Something about shirt of the month</h2>
           <hr/>
-          {/* <Checkout
+          <Checkout
             products={items}
             run={run}
             setRun={setRun}
-          /> */}
-        </Col>
+          />
+        </Col> */}
         
       </Row>
       
