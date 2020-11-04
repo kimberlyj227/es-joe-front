@@ -48,9 +48,8 @@ const Footer = () => {
               />
             </Col>
             <Col id="info">
-              <p>email: joe@espressojoe.com | phone: 123.456.7890</p>
-              <p>address here</p>
-              <p>Copyright statement about designs</p>
+              {/* <p>email: joe@espressojoe.com | phone: 123.456.7890</p> */}
+              <p>All shirts designed by Espresso Joe Tees</p>
             </Col>
             <Col>
               <div></div>
